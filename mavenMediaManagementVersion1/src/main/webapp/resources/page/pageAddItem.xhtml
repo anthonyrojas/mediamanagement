@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Add Item Page"/>
+
+        <ui:define name="panel-main">
+
+            <h1 style="text-align:center">Media Manager</h1>
+            <p style="text-align:center"> Enter information for the new item to be added.</p>
+
+
+            <p> Enter information for the new item to be added.</p>
+
+            <h:form>
+                <p>Library ID will be determined randomly by the system. </p><br/>
+                Title: <br/>
+                <h:inputText value="#{libraryBean.MTitle}"/><br/>
+                Author/Creator: <br/>
+                <h:inputText value="#{libraryBean.MAuthor}"/><br/>
+                Publisher: <br/>
+                <h:inputText value="#{libraryBean.MPublisher}"/><br/>
+                Year Published: <br/>
+                <h:inputText value="#{libraryBean.MYear}"/><br/>
+                Media Type: <br/>
+                <h:inputText value="#{libraryBean.MMediaType}"/><br/>
+                Barcode: <br/>
+                <h:inputText value="#{libraryBean.MBarcode}"/><br/>
+                <br/><br/>
+                <h:commandButton value='Submit' action='pageConfirmAddItem'/>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

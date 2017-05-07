@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditActorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditActorLabel_actorName}" for="actorName" />
+                    <h:inputText id="actorName" value="#{actorController.selected.actorName}" title="#{bundle.EditActorTitle_actorName}" required="true" requiredMessage="#{bundle.EditActorRequiredMessage_actorName}"/>
+                    <h:outputLabel value="#{bundle.EditActorLabel_actorDescription}" for="actorDescription" />
+                    <h:inputTextarea rows="4" cols="30" id="actorDescription" value="#{actorController.selected.actorDescription}" title="#{bundle.EditActorTitle_actorDescription}" />
+                    <h:outputLabel value="#{bundle.EditActorLabel_actorId}" for="actorId" />
+                    <h:inputText id="actorId" value="#{actorController.selected.actorId}" title="#{bundle.EditActorTitle_actorId}" required="true" requiredMessage="#{bundle.EditActorRequiredMessage_actorId}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{actorController.update}" value="#{bundle.EditActorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditActorViewLink}"/>
+                <br />
+                <h:commandLink action="#{actorController.prepareList}" value="#{bundle.EditActorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditActorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

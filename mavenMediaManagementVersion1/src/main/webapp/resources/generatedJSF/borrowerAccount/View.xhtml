@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBorrowerAccountTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBorrowerAccountLabel_borrowerId}"/>
+                    <h:outputText value="#{borrowerAccountController.selected.borrowerId}" title="#{bundle.ViewBorrowerAccountTitle_borrowerId}"/>
+                    <h:outputText value="#{bundle.ViewBorrowerAccountLabel_username}"/>
+                    <h:outputText value="#{borrowerAccountController.selected.username}" title="#{bundle.ViewBorrowerAccountTitle_username}"/>
+                    <h:outputText value="#{bundle.ViewBorrowerAccountLabel_password}"/>
+                    <h:outputText value="#{borrowerAccountController.selected.password}" title="#{bundle.ViewBorrowerAccountTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewBorrowerAccountLabel_contactcontactid}"/>
+                    <h:outputText value="#{borrowerAccountController.selected.contactcontactid}" title="#{bundle.ViewBorrowerAccountTitle_contactcontactid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{borrowerAccountController.destroyAndView}" value="#{bundle.ViewBorrowerAccountDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBorrowerAccountEditLink}"/>
+                <br />
+                <h:commandLink action="#{borrowerAccountController.prepareCreate}" value="#{bundle.ViewBorrowerAccountCreateLink}" />
+                <br />
+                <h:commandLink action="#{borrowerAccountController.prepareList}" value="#{bundle.ViewBorrowerAccountShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBorrowerAccountIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

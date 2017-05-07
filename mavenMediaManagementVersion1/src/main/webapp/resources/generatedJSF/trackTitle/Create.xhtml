@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTrackTitleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTrackTitleLabel_trackId}" for="trackId" />
+                    <h:inputText id="trackId" value="#{trackTitleController.selected.trackId}" title="#{bundle.CreateTrackTitleTitle_trackId}" required="true" requiredMessage="#{bundle.CreateTrackTitleRequiredMessage_trackId}"/>
+                    <h:outputLabel value="#{bundle.CreateTrackTitleLabel_trackTitle}" for="trackTitle" />
+                    <h:inputText id="trackTitle" value="#{trackTitleController.selected.trackTitle}" title="#{bundle.CreateTrackTitleTitle_trackTitle}" required="true" requiredMessage="#{bundle.CreateTrackTitleRequiredMessage_trackTitle}"/>
+                    <h:outputLabel value="#{bundle.CreateTrackTitleLabel_trackRunTime}" for="trackRunTime" />
+                    <h:inputText id="trackRunTime" value="#{trackTitleController.selected.trackRunTime}" title="#{bundle.CreateTrackTitleTitle_trackRunTime}" required="true" requiredMessage="#{bundle.CreateTrackTitleRequiredMessage_trackRunTime}"/>
+                    <h:outputLabel value="#{bundle.CreateTrackTitleLabel_trackBackground}" for="trackBackground" />
+                    <h:inputTextarea rows="4" cols="30" id="trackBackground" value="#{trackTitleController.selected.trackBackground}" title="#{bundle.CreateTrackTitleTitle_trackBackground}" required="true" requiredMessage="#{bundle.CreateTrackTitleRequiredMessage_trackBackground}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{trackTitleController.create}" value="#{bundle.CreateTrackTitleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{trackTitleController.prepareList}" value="#{bundle.CreateTrackTitleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTrackTitleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

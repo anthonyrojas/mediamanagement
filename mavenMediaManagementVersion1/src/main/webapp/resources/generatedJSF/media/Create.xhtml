@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMediaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_upc}" for="upc" />
+                    <h:inputText id="upc" value="#{mediaController.selected.upc}" title="#{bundle.CreateMediaTitle_upc}" required="true" requiredMessage="#{bundle.CreateMediaRequiredMessage_upc}"/>
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{mediaController.selected.title}" title="#{bundle.CreateMediaTitle_title}" required="true" requiredMessage="#{bundle.CreateMediaRequiredMessage_title}"/>
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{mediaController.selected.description}" title="#{bundle.CreateMediaTitle_description}" required="true" requiredMessage="#{bundle.CreateMediaRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_diskMovie}" for="diskMovie" />
+                    <h:selectOneMenu id="diskMovie" value="#{mediaController.selected.diskMovie}" title="#{bundle.CreateMediaTitle_diskMovie}" >
+                        <f:selectItems value="#{diskMovieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_book}" for="book" />
+                    <h:selectOneMenu id="book" value="#{mediaController.selected.book}" title="#{bundle.CreateMediaTitle_book}" >
+                        <f:selectItems value="#{bookController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMediaLabel_cd}" for="cd" />
+                    <h:selectOneMenu id="cd" value="#{mediaController.selected.cd}" title="#{bundle.CreateMediaTitle_cd}" >
+                        <f:selectItems value="#{cdController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mediaController.create}" value="#{bundle.CreateMediaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mediaController.prepareList}" value="#{bundle.CreateMediaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMediaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

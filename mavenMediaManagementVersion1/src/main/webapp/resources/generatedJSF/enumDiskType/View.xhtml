@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEnumDiskTypeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEnumDiskTypeLabel_diskType}"/>
+                    <h:outputText value="#{enumDiskTypeController.selected.diskType}" title="#{bundle.ViewEnumDiskTypeTitle_diskType}"/>
+                    <h:outputText value="#{bundle.ViewEnumDiskTypeLabel_desktTypeDescription}"/>
+                    <h:outputText value="#{enumDiskTypeController.selected.desktTypeDescription}" title="#{bundle.ViewEnumDiskTypeTitle_desktTypeDescription}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{enumDiskTypeController.destroyAndView}" value="#{bundle.ViewEnumDiskTypeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEnumDiskTypeEditLink}"/>
+                <br />
+                <h:commandLink action="#{enumDiskTypeController.prepareCreate}" value="#{bundle.ViewEnumDiskTypeCreateLink}" />
+                <br />
+                <h:commandLink action="#{enumDiskTypeController.prepareList}" value="#{bundle.ViewEnumDiskTypeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEnumDiskTypeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

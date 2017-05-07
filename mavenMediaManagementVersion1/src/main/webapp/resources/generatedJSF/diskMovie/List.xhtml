@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDiskMovieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDiskMovieEmpty}" rendered="#{diskMovieController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{diskMovieController.items.rowCount > 0}">
+                    <h:outputText value="#{diskMovieController.pagination.pageFirstItem + 1}..#{diskMovieController.pagination.pageLastItem + 1}/#{diskMovieController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{diskMovieController.previous}" value="#{bundle.Previous} #{diskMovieController.pagination.pageSize}" rendered="#{diskMovieController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{diskMovieController.next}" value="#{bundle.Next} #{diskMovieController.pagination.pageSize}" rendered="#{diskMovieController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{diskMovieController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiskMovieTitle_upc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.upc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiskMovieTitle_runTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.runTime}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiskMovieTitle_releaseDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.releaseDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiskMovieTitle_numberOfDiscs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numberOfDiscs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiskMovieTitle_media}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.media}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{diskMovieController.prepareView}" value="#{bundle.ListDiskMovieViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{diskMovieController.prepareEdit}" value="#{bundle.ListDiskMovieEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{diskMovieController.destroy}" value="#{bundle.ListDiskMovieDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{diskMovieController.prepareCreate}" value="#{bundle.ListDiskMovieCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDiskMovieIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRateBorrowerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRateBorrowerLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rateBorrowerController.selected.id}" title="#{bundle.CreateRateBorrowerTitle_id}" required="true" requiredMessage="#{bundle.CreateRateBorrowerRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateRateBorrowerLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{rateBorrowerController.selected.description}" title="#{bundle.CreateRateBorrowerTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateRateBorrowerLabel_transactiontransactionid}" for="transactiontransactionid" />
+                    <h:selectOneMenu id="transactiontransactionid" value="#{rateBorrowerController.selected.transactiontransactionid}" title="#{bundle.CreateRateBorrowerTitle_transactiontransactionid}" required="true" requiredMessage="#{bundle.CreateRateBorrowerRequiredMessage_transactiontransactionid}">
+                        <f:selectItems value="#{transactionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rateBorrowerController.create}" value="#{bundle.CreateRateBorrowerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rateBorrowerController.prepareList}" value="#{bundle.CreateRateBorrowerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRateBorrowerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

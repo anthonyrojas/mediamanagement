@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEnumAspectRatioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEnumAspectRatioEmpty}" rendered="#{enumAspectRatioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{enumAspectRatioController.items.rowCount > 0}">
+                    <h:outputText value="#{enumAspectRatioController.pagination.pageFirstItem + 1}..#{enumAspectRatioController.pagination.pageLastItem + 1}/#{enumAspectRatioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{enumAspectRatioController.previous}" value="#{bundle.Previous} #{enumAspectRatioController.pagination.pageSize}" rendered="#{enumAspectRatioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{enumAspectRatioController.next}" value="#{bundle.Next} #{enumAspectRatioController.pagination.pageSize}" rendered="#{enumAspectRatioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{enumAspectRatioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnumAspectRatioTitle_aspectRatio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aspectRatio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnumAspectRatioTitle_aspectRatioDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aspectRatioDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{enumAspectRatioController.prepareView}" value="#{bundle.ListEnumAspectRatioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enumAspectRatioController.prepareEdit}" value="#{bundle.ListEnumAspectRatioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enumAspectRatioController.destroy}" value="#{bundle.ListEnumAspectRatioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{enumAspectRatioController.prepareCreate}" value="#{bundle.ListEnumAspectRatioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEnumAspectRatioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

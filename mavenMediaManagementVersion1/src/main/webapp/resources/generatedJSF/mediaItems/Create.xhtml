@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMediaItemsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMediaItemsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{mediaItemsController.selected.id}" title="#{bundle.CreateMediaItemsTitle_id}" required="true" requiredMessage="#{bundle.CreateMediaItemsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateMediaItemsLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{mediaItemsController.selected.description}" title="#{bundle.CreateMediaItemsTitle_description}" required="true" requiredMessage="#{bundle.CreateMediaItemsRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreateMediaItemsLabel_mediaUPC}" for="mediaUPC" />
+                    <h:selectOneMenu id="mediaUPC" value="#{mediaItemsController.selected.mediaUPC}" title="#{bundle.CreateMediaItemsTitle_mediaUPC}" required="true" requiredMessage="#{bundle.CreateMediaItemsRequiredMessage_mediaUPC}">
+                        <f:selectItems value="#{mediaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMediaItemsLabel_statusstatus}" for="statusstatus" />
+                    <h:selectOneMenu id="statusstatus" value="#{mediaItemsController.selected.statusstatus}" title="#{bundle.CreateMediaItemsTitle_statusstatus}" required="true" requiredMessage="#{bundle.CreateMediaItemsRequiredMessage_statusstatus}">
+                        <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mediaItemsController.create}" value="#{bundle.CreateMediaItemsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mediaItemsController.prepareList}" value="#{bundle.CreateMediaItemsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMediaItemsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

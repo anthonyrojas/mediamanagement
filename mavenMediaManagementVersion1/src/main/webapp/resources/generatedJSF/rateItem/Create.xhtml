@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRateItemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRateItemLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rateItemController.selected.id}" title="#{bundle.CreateRateItemTitle_id}" required="true" requiredMessage="#{bundle.CreateRateItemRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateRateItemLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{rateItemController.selected.description}" title="#{bundle.CreateRateItemTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateRateItemLabel_stars}" for="stars" />
+                    <h:inputText id="stars" value="#{rateItemController.selected.stars}" title="#{bundle.CreateRateItemTitle_stars}" required="true" requiredMessage="#{bundle.CreateRateItemRequiredMessage_stars}"/>
+                    <h:outputLabel value="#{bundle.CreateRateItemLabel_transactiontransactionid}" for="transactiontransactionid" />
+                    <h:selectOneMenu id="transactiontransactionid" value="#{rateItemController.selected.transactiontransactionid}" title="#{bundle.CreateRateItemTitle_transactiontransactionid}" required="true" requiredMessage="#{bundle.CreateRateItemRequiredMessage_transactiontransactionid}">
+                        <f:selectItems value="#{transactionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rateItemController.create}" value="#{bundle.CreateRateItemSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rateItemController.prepareList}" value="#{bundle.CreateRateItemShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRateItemIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

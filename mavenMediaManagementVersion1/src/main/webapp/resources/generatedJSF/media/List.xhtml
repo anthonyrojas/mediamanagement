@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMediaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMediaEmpty}" rendered="#{mediaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mediaController.items.rowCount > 0}">
+                    <h:outputText value="#{mediaController.pagination.pageFirstItem + 1}..#{mediaController.pagination.pageLastItem + 1}/#{mediaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mediaController.previous}" value="#{bundle.Previous} #{mediaController.pagination.pageSize}" rendered="#{mediaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mediaController.next}" value="#{bundle.Next} #{mediaController.pagination.pageSize}" rendered="#{mediaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mediaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_upc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.upc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_title}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_diskMovie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diskMovie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_book}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.book}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMediaTitle_cd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mediaController.prepareView}" value="#{bundle.ListMediaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mediaController.prepareEdit}" value="#{bundle.ListMediaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mediaController.destroy}" value="#{bundle.ListMediaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mediaController.prepareCreate}" value="#{bundle.ListMediaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMediaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,7 @@
+look at ps-jsf-07-exprlang for product-detail reference
+
+look at ps-jsf-08-shoppingcart for shopping cart reference
+
+look at ps-jsf-10-signin for sign in reference
+
+note mavenMediaManagementVersion1

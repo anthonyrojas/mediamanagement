@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDiskMovieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDiskMovieLabel_upc}" for="upc" />
+                    <h:inputText id="upc" value="#{diskMovieController.selected.upc}" title="#{bundle.EditDiskMovieTitle_upc}" required="true" requiredMessage="#{bundle.EditDiskMovieRequiredMessage_upc}"/>
+                    <h:outputLabel value="#{bundle.EditDiskMovieLabel_runTime}" for="runTime" />
+                    <h:inputText id="runTime" value="#{diskMovieController.selected.runTime}" title="#{bundle.EditDiskMovieTitle_runTime}" />
+                    <h:outputLabel value="#{bundle.EditDiskMovieLabel_releaseDate}" for="releaseDate" />
+                    <h:inputText id="releaseDate" value="#{diskMovieController.selected.releaseDate}" title="#{bundle.EditDiskMovieTitle_releaseDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDiskMovieLabel_numberOfDiscs}" for="numberOfDiscs" />
+                    <h:inputText id="numberOfDiscs" value="#{diskMovieController.selected.numberOfDiscs}" title="#{bundle.EditDiskMovieTitle_numberOfDiscs}" />
+                    <h:outputLabel value="#{bundle.EditDiskMovieLabel_media}" for="media" />
+                    <h:selectOneMenu id="media" value="#{diskMovieController.selected.media}" title="#{bundle.EditDiskMovieTitle_media}" required="true" requiredMessage="#{bundle.EditDiskMovieRequiredMessage_media}">
+                        <f:selectItems value="#{mediaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{diskMovieController.update}" value="#{bundle.EditDiskMovieSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDiskMovieViewLink}"/>
+                <br />
+                <h:commandLink action="#{diskMovieController.prepareList}" value="#{bundle.EditDiskMovieShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDiskMovieIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

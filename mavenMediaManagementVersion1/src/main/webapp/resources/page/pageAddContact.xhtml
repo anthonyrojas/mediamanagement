@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Add Contact Page"/>
+
+        <ui:define name="panel-main">
+
+            <h1>Add Contact</h1>
+            <h:form>
+                <div>
+                    <h:outputLabel for="firstName" value="First Name: "/>
+                    <h:inputText id="firstName" size="10" value="#{contact.firstName}"/>
+                </div>
+                <div>
+                    <h:outputLabel for="lastName" value="  LastName:  "/>
+                    <h:inputText id="lastName" size="10" value="#{contact.lastName}"/>
+                </div>
+                <div>
+                    <h:outputLabel for="email" value="Email: "/>
+                    <h:inputText id="email" size="20" value="#{contact.email}"/>
+                </div>
+                <div>
+                    <h:outputLabel for="phone" value="Phone Number: "/>
+                    <h:inputText id="phone" size="15" value="#{contact.phoneNumber}"/>
+                </div>
+                <div>
+                    <h:commandButton value="Add Contact" action="#{contact.addContact()}"/>
+                </div>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

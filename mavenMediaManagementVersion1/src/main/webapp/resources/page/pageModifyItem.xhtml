@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Modify Item Page"/>
+
+        <ui:define name="panel-main">
+
+            <p>Modify the information for this item: </p>
+            <h:form>
+                Title: <br/>
+                <input type="text" name="title"/><br/>
+                Author/Creator: <br/>    
+                <input type = "text" name="author"/><br/>                
+                Publisher: <br/>                
+                <input type="text" name="publisher"/><br/>                
+                Year Published: <br/>                
+                <input type="text" name="year"/><br/>               
+                Media Type: <br/>                
+                <input type = "text" name="media type"/><br/>                
+                ISBN\ISMN\UPC\Barcode: <br/>                
+                <input type = "text" name="barcode"/><br/>
+                Library ID#: <br/>               
+                <input type="text" name="libraryid"/><br/>                
+                <input type="submit" value="Submit"/>            
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

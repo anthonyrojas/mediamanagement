@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTransactionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTransactionLabel_transactionId}" for="transactionId" />
+                    <h:inputText id="transactionId" value="#{transactionController.selected.transactionId}" title="#{bundle.CreateTransactionTitle_transactionId}" required="true" requiredMessage="#{bundle.CreateTransactionRequiredMessage_transactionId}"/>
+                    <h:outputLabel value="#{bundle.CreateTransactionLabel_transactionStatustransactionstatus}" for="transactionStatustransactionstatus" />
+                    <h:selectOneMenu id="transactionStatustransactionstatus" value="#{transactionController.selected.transactionStatustransactionstatus}" title="#{bundle.CreateTransactionTitle_transactionStatustransactionstatus}" required="true" requiredMessage="#{bundle.CreateTransactionRequiredMessage_transactionStatustransactionstatus}">
+                        <f:selectItems value="#{transactionStatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTransactionLabel_borrowerAccountborrowerid}" for="borrowerAccountborrowerid" />
+                    <h:selectOneMenu id="borrowerAccountborrowerid" value="#{transactionController.selected.borrowerAccountborrowerid}" title="#{bundle.CreateTransactionTitle_borrowerAccountborrowerid}" required="true" requiredMessage="#{bundle.CreateTransactionRequiredMessage_borrowerAccountborrowerid}">
+                        <f:selectItems value="#{borrowerAccountController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTransactionLabel_mediaItemsid}" for="mediaItemsid" />
+                    <h:selectOneMenu id="mediaItemsid" value="#{transactionController.selected.mediaItemsid}" title="#{bundle.CreateTransactionTitle_mediaItemsid}" required="true" requiredMessage="#{bundle.CreateTransactionRequiredMessage_mediaItemsid}">
+                        <f:selectItems value="#{mediaItemsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTransactionLabel_transactionTypetransactiontype}" for="transactionTypetransactiontype" />
+                    <h:selectOneMenu id="transactionTypetransactiontype" value="#{transactionController.selected.transactionTypetransactiontype}" title="#{bundle.CreateTransactionTitle_transactionTypetransactiontype}" required="true" requiredMessage="#{bundle.CreateTransactionRequiredMessage_transactionTypetransactiontype}">
+                        <f:selectItems value="#{transactionTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{transactionController.create}" value="#{bundle.CreateTransactionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{transactionController.prepareList}" value="#{bundle.CreateTransactionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTransactionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

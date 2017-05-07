@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMediaItemsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMediaItemsLabel_id}"/>
+                    <h:outputText value="#{mediaItemsController.selected.id}" title="#{bundle.ViewMediaItemsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewMediaItemsLabel_description}"/>
+                    <h:outputText value="#{mediaItemsController.selected.description}" title="#{bundle.ViewMediaItemsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewMediaItemsLabel_mediaUPC}"/>
+                    <h:outputText value="#{mediaItemsController.selected.mediaUPC}" title="#{bundle.ViewMediaItemsTitle_mediaUPC}"/>
+                    <h:outputText value="#{bundle.ViewMediaItemsLabel_statusstatus}"/>
+                    <h:outputText value="#{mediaItemsController.selected.statusstatus}" title="#{bundle.ViewMediaItemsTitle_statusstatus}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mediaItemsController.destroyAndView}" value="#{bundle.ViewMediaItemsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMediaItemsEditLink}"/>
+                <br />
+                <h:commandLink action="#{mediaItemsController.prepareCreate}" value="#{bundle.ViewMediaItemsCreateLink}" />
+                <br />
+                <h:commandLink action="#{mediaItemsController.prepareList}" value="#{bundle.ViewMediaItemsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMediaItemsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

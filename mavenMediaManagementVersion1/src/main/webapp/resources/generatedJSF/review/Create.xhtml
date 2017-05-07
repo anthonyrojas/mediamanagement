@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateReviewTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateReviewLabel_review}" for="review" />
+                    <h:inputTextarea rows="4" cols="30" id="review" value="#{reviewController.selected.review}" title="#{bundle.CreateReviewTitle_review}" required="true" requiredMessage="#{bundle.CreateReviewRequiredMessage_review}"/>
+                    <h:outputLabel value="#{bundle.CreateReviewLabel_reviewId}" for="reviewId" />
+                    <h:inputText id="reviewId" value="#{reviewController.selected.reviewId}" title="#{bundle.CreateReviewTitle_reviewId}" required="true" requiredMessage="#{bundle.CreateReviewRequiredMessage_reviewId}"/>
+                    <h:outputLabel value="#{bundle.CreateReviewLabel_rating}" for="rating" />
+                    <h:inputText id="rating" value="#{reviewController.selected.rating}" title="#{bundle.CreateReviewTitle_rating}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reviewController.create}" value="#{bundle.CreateReviewSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{reviewController.prepareList}" value="#{bundle.CreateReviewShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateReviewIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

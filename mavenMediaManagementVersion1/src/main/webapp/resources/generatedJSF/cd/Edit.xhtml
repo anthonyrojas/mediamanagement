@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCdTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCdLabel_upc}" for="upc" />
+                    <h:inputText id="upc" value="#{cdController.selected.upc}" title="#{bundle.EditCdTitle_upc}" required="true" requiredMessage="#{bundle.EditCdRequiredMessage_upc}"/>
+                    <h:outputLabel value="#{bundle.EditCdLabel_media}" for="media" />
+                    <h:selectOneMenu id="media" value="#{cdController.selected.media}" title="#{bundle.EditCdTitle_media}" required="true" requiredMessage="#{bundle.EditCdRequiredMessage_media}">
+                        <f:selectItems value="#{mediaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cdController.update}" value="#{bundle.EditCdSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCdViewLink}"/>
+                <br />
+                <h:commandLink action="#{cdController.prepareList}" value="#{bundle.EditCdShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCdIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

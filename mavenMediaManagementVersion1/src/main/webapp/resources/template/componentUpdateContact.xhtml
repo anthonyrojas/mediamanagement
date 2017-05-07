@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <ui:composition>
+            <div class="container">
+                <h1>Update Contact</h1>
+                <h:form>
+                    <h:dataTable value="#{contact.contactList}" var="c">
+                        <h:column>
+                            <f:facet name="header">First Name</f:facet>
+                            <h:outputText value="#{c.firstName}" rendered="#{not c.update}"/>
+                            <h:inputText value="#{c.firstName}" size="10" rendered="#{c.update}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Last Name</f:facet>
+                            <h:outputText value="#{c.lastName}" rendered="#{not c.update}"/>
+                            <h:inputText value="#{c.lastName}" size="10" rendered="#{c.update}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{c.email}" rendered="#{not c.update}"/>
+                            <h:inputText value ="#{c.email}" size="10" rendered="#{c.update}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Phone Number</f:facet>
+                            <h:outputText value="#{c.phoneNumber}" rendered="#{not c.update}"/>
+                            <h:inputText value="#{c.phoneNumber}" size="8" rendered="#{c.update}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+                            <h:commandLink value="Update" action="#{contact.updateContact(c)}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton value="Update Contact" action="#{contact.saveUpdateContact}"/>
+                </h:form>
+                <br/>
+                <h:form>
+                    <div>
+                        <h:outputLabel for="firstName" value="First Name: "/>
+                        <h:inputText id="firstName" size="10" value="#{contact.firstName}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel for="lastName" value="  LastName:  "/>
+                        <h:inputText id="lastName" size="10" value="#{contact.lastName}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel for="email" value="Email: "/>
+                        <h:inputText id="email" size="20" value="#{contact.email}"/>
+                    </div>
+                    <div>
+                        <h:outputLabel for="phone" value="Phone Number: "/>
+                        <h:inputText id="phone" size="15" value="#{contact.phoneNumber}"/>
+                    </div>
+                    <div>
+                        <h:commandButton value="Add Contact" action="#{contact.addContact()}"/>
+                    </div>
+                </h:form>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>

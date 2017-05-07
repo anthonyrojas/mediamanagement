@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:view contentType ="text/html">
+
+        <h:head>
+            <meta charset="UTF-8"/>
+            <title>Media Management - #{pageTitle}</title>
+
+            <h:outputStylesheet library="css" name="jsfcrud.css"/>
+
+            <!-- Bootstrap core CSS -->
+            <h:outputStylesheet name="bootstrap.min.css" library="css" />
+            <h:outputStylesheet name="style.css" library="css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        </h:head>
+
+        <h:body>
+            <div class="container">
+
+                <div class="row">
+                    <div class="center-block" id="default">
+                        <ui:insert name="panel-top" >
+                            <ui:include src="/resources/template/componentHeader.xhtml" />
+                        </ui:insert>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="center-block" id="default">
+                        <ui:insert name="panel-main">
+                            <p>Panel Main Here</p>
+
+                        </ui:insert>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="center-block" id="default">
+                        <ui:insert name="panel-footer" >
+                            <ui:include src="/resources/template/componentFooter.xhtml" />
+                        </ui:insert>
+                    </div>
+                </div>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+
+</html>
+

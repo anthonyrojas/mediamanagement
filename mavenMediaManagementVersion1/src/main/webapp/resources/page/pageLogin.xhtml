@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Login Page"/>
+
+        <ui:define name="panel-main">
+
+            <h:form>
+                <h:outputLabel value="Enter your name    : " />
+                <h:inputText value="" />
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+                <h:outputLabel value="Enter your password: " />
+                <h:inputSecret value="" />
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+                <h:commandButton value="Sign In" type="button" action="indexPage" />
+                <h:commandButton value="Password Reset" type="button" action="indexPage"/>
+            </h:form>
+            <h:outputText value="Don't have an account?" escape="false" />
+            <h:outputLink value="pageRegistration.xhtml">Registration</h:outputLink>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

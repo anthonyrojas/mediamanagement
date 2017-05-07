@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="User Registration Page"/>
+
+        <ui:define name="panel-main">
+
+            <h1>Registration Page</h1>
+
+            <h:form>
+
+                <p>First Name:</p>
+                <input type="text" name="title"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                <p>Middle Name: </p> 
+                <input type = "text" name="author"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                <p>Last Name: </p>   
+                <input type = "text" name="author"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />                
+
+                <p>Phone Number: </p>        
+                <input type="number" name="phonenumberAreaCode" min="1" max="999" maxlength="3"/>
+                <p>-</p> <input type="number" name="phonenumberThreeDigits" min="0" max="999" maxlength="3"/>
+                <p>-</p> <input type="number" name="phonenumberFourDigits" min="0" max="9999" maxlength="4"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                <p>Email: </p>
+                <input type="email" name="email"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                <p>Birthdate: </p>  
+                <input type="date" name="birthdate" max="2100-12-31"/>
+                <h:outputText value="&lt;br/&gt;" escape="false" />
+
+                <input type="submit" value="Submit"/>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

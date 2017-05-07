@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Delete Contact Page"/>
+
+        <ui:define name="panel-main">
+
+            <h1>Delete Contact</h1>
+            <h:form>
+                <h:dataTable value="#{contact.contactList}" var="c">
+                    <h:column>
+                        <f:facet name="header">First Name</f:facet>
+                            #{c.firstName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Last Name</f:facet>
+                            #{c.lastName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                            #{c.email}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Phone Number</f:facet>
+                            #{c.phoneNumber}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandLink value="Delete" action="#{contact.deleteContact(c)}"/>                        
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+            <br/>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

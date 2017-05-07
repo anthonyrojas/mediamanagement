@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/resources/template/page-template.xhtml">
+
+        <ui:param name="pageTitle" value="Manual Page"/>
+
+        <ui:define name="panel-main">
+            
+            <h1>Manual Page</h1>
+            <p>(insert your content here)</p>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+    <h:head>
+        <title>Media Management</title>
+        <!-- Bootstrap core CSS -->
+        <h:outputStylesheet name="bootstrap.min.css" library="css" />
+
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+
+    <h:body>
+
+        <div class="container">
+            <div class="row">
+                <div class="center-block">         
+                    <ui:insert name="header" >
+                        <ui:include src="/resources/template/componentHeader.xhtml" />
+                    </ui:insert>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container center-block">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="center-block">
+                    <ui:insert name="footer" >
+                        <ui:include src="/resources/template/componentFooter.xhtml" />
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
