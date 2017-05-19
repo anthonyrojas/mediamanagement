@@ -21,7 +21,7 @@
                     <h:inputText id="title" value="#{mediaController.selected.title}" title="#{bundle.CreateMediaTitle_title}" required="true" requiredMessage="#{bundle.CreateMediaRequiredMessage_title}"/>
                     <h:outputLabel value="#{bundle.CreateMediaLabel_description}" for="description" />
                     <h:inputTextarea rows="4" cols="30" id="description" value="#{mediaController.selected.description}" title="#{bundle.CreateMediaTitle_description}" required="true" requiredMessage="#{bundle.CreateMediaRequiredMessage_description}"/>
-                    <h:outputLabel value="#{bundle.CreateMediaLabel_diskMovie}" for="diskMovie" />
+<!--                    <h:outputLabel value="#{bundle.CreateMediaLabel_diskMovie}" for="diskMovie" />
                     <h:selectOneMenu id="diskMovie" value="#{mediaController.selected.diskMovie}" title="#{bundle.CreateMediaTitle_diskMovie}" >
                         <f:selectItems value="#{diskMovieController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
@@ -32,7 +32,7 @@
                     <h:outputLabel value="#{bundle.CreateMediaLabel_cd}" for="cd" />
                     <h:selectOneMenu id="cd" value="#{mediaController.selected.cd}" title="#{bundle.CreateMediaTitle_cd}" >
                         <f:selectItems value="#{cdController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
+                    </h:selectOneMenu>-->
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{mediaController.create}" value="#{bundle.CreateMediaSaveLink}" />

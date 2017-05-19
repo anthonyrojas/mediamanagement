@@ -9,6 +9,15 @@ body {
     font-size: small;
 }
 
+footer, header{
+    color: white;
+    background-color: black;
+}
+
+footer li{
+    color: white;
+}
+
 a {
     color: #e33b06;
 }

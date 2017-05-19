@@ -13,12 +13,22 @@ body, product-summary {
     align-content: center;
 }
 
-#wrapper{
-    background-color: yellowgreen;
+header{
+    background-color: black;
+    color: white;
+}
+
+footer{
+    background-color: black;
+    color: white;
+}
+
+footer li{
+    color: white;
 }
 
 #default, #header, #searchBar, #navigationBar, #footer, #login, #addContact, #addItem, #modifyItem, #deleteContact, #updateContact, #content, #footer{
-    border : 1px solid black;
+    /*border : 1px solid black;*/
     padding: 10px;
     margin: 5px;
 }
